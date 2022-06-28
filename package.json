@@ -1,0 +1,25 @@
+{
+  "name": "atividade_avaliativa_biblioteca_matheus_franzener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatheusFranzener/atividade_avaliativa_biblioteca_matheus_franzener.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatheusFranzener/atividade_avaliativa_biblioteca_matheus_franzener/issues"
+  },
+  "homepage": "https://github.com/MatheusFranzener/atividade_avaliativa_biblioteca_matheus_franzener#readme",
+  "dependencies": {
+    "firebase": "^9.8.4",
+    "firebase-admin": "^11.0.0",
+    "nodemon": "^2.0.18"
+  }
+}
