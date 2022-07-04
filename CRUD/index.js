@@ -1,11 +1,14 @@
 const { initializeApp } = require('firebase/app');
-const {
-    getFirestore,
+const { getFirestore,
     collection,
     doc,
     setDoc,
     addDoc,
-} = require('firebase/firestore/lite');
+    getDoc,
+    getDocs,
+    query,
+    deleteDoc }
+ = require('firebase/firestore/lite');
 
 const firebaseConfig = {
     apiKey: "AIzaSyBIceUNvjb9TXhaovoXlpZqV3GAdD9QC8U",

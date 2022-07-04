@@ -12,7 +12,7 @@ router.get("/:id", async (req, res) => {
     res.json(await autoresHandler.getAutoresById(req.params.id));
 });
 
-router.post("/", async (req, res) => {s
+router.post("/", async (req, res) => {
     res.json(await autoresHandler.criarAutor(req.body));
 });
 
