@@ -20,7 +20,7 @@ const app = initializeApp(firebaseConfig);
 
 const bd = getFirestore();
 
-async function dados(nomeTabela, id, dado) {
+async function criar(nomeTabela, id, dado) {
     if (id) {
         const referenceEntity = await setDoc(doc(bd, nomeTabela, id), dado);
         const savedData = {
@@ -38,6 +38,47 @@ async function dados(nomeTabela, id, dado) {
     }
 }
 
+async function get(nomeTabela) {
+    const tableRef = collection(bd, nomeTabela);
+
+    const q = query(tableRef);
+
+    const querySnapshot = await getDocs(q);
+
+    const lista = [];
+
+    querySnapshot.forEach((doc) => {
+        const data = {
+            ...doc.data(),
+            id: doc.id
+        }
+        lista.push(data);
+    });
+    return lista;
+}
+
+async function getById(nomeTabela, id) {
+    const docRef = doc(bd, nomeTabela, id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        return docSnap.data();
+    } else {
+        return new Error("Não encontrado!");
+    }
+}
+
+async function remove(nomeTabela, id){
+    const dado = await deleteDoc(doc(bd, nomeTabela, id));
+    return {
+        message: `${id} deletado`
+    }
+}
+
+
 module.exports = {
-    dados
+    criar,
+    get,
+    getById,
+    remove
 };

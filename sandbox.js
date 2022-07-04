@@ -1,7 +1,7 @@
 const crud = require("./CRUD");
 
 async function criarTabelaAutores(){
-    const tabelaAutores = await crud.dados("autores",{
+    const tabelaAutores = await crud.criar("autores",'1',{
         id_autor:1,
         nome:"Matheus",
         nacionalidade:"brasileiro"
@@ -11,38 +11,38 @@ async function criarTabelaAutores(){
 
 criarTabelaAutores();
 
-async function criarTabelaClientes(){
-    const tabelaClientes = await crud.dados("clientes",{
-        id_cliente:1,
-        nome:"Carlos",
-        telefone:"123",
-        email:"carlos@gmail.com"
-    });
-    console.log(tabelaClientes);
-}
+// async function criarTabelaClientes(){
+//     const tabelaClientes = await crud.dados("clientes",{
+//         id_cliente:1,
+//         nome:"Carlos",
+//         telefone:"123",
+//         email:"carlos@gmail.com"
+//     });
+//     console.log(tabelaClientes);
+// }
 
-criarTabelaClientes();
+// criarTabelaClientes();
 
-async function criarTabelaEditoras(){
-    const tabelaEditoras = await crud.dados("editoras",{
-        cnpj:"1234",
-        nome:"Saraiva"
-    });
-    console.log(tabelaEditoras);
-}
+// async function criarTabelaEditoras(){
+//     const tabelaEditoras = await crud.dados("editoras",{
+//         cnpj:"1234",
+//         nome:"Saraiva"
+//     });
+//     console.log(tabelaEditoras);
+// }
 
-criarTabelaEditoras();
+// criarTabelaEditoras();
 
-async function criarTabelaLivros(){
-    const tabelaLivros = await crud.dados("livros",{
-        codigo:1,
-        titulo:"Pequeno Principe",
-        genero:"Aventura"
-    });
-    console.log(tabelaLivros);
-}
+// async function criarTabelaLivros(){
+//     const tabelaLivros = await crud.dados("livros",{
+//         codigo:1,
+//         titulo:"Pequeno Principe",
+//         genero:"Aventura"
+//     });
+//     console.log(tabelaLivros);
+// }
 
-criarTabelaLivros();
+// criarTabelaLivros();
 
 
 
