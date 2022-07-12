@@ -1,36 +1,36 @@
 const { async } = require('@firebase/util');
-const {criar, get, getById, remove} = require('../../CRUD/index');
+const { criar, buscar, buscarPorId, deletar } = require('../../CRUD/index');
 
-async function criarAutor(autor){
+async function criarAutor(autor) {
     const novoAutor = await criar("autores", null, autor);
     return novoAutor;
 }
 
-async function getAutores(){
-    const autores = await get("autores");
+async function buscarAutores() {
+    const autores = await buscar("autores");
     return autores;
-};
+}
 
-async function getAutoresById(id){
-    const autor = await getById("autores", id);
+async function buscarAutor(id) {
+    const autor = await buscarPorId("autores", id);
     return autor;
 }
 
-async function attAutor(id, autor){
+async function attAutor(id, autor) {
     const attAutor = await criar("autores", id, autor);
     return attAutor;
 }
 
-async function removerAutor(id){
-    const autorRemovido = remove('autores', id);
-    return autorRemovido;
+async function deletarAutor(id) {
+    const autorDeletado = deletar('autores', id);
+    return autorDeletado;
 }
 
 module.exports = {
     criarAutor,
-    getAutores,
-    getAutoresById,
+    buscarAutores,
+    buscarAutor,
     attAutor,
-    removerAutor,
+    deletarAutor,
     async
 }

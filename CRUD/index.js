@@ -8,7 +8,7 @@ const { getFirestore,
     getDocs,
     query,
     deleteDoc }
- = require('firebase/firestore/lite');
+    = require('firebase/firestore/lite');
 
 const firebaseConfig = {
     apiKey: "AIzaSyBIceUNvjb9TXhaovoXlpZqV3GAdD9QC8U",
@@ -21,18 +21,18 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-const bd = getFirestore();
+const bancoDados = getFirestore();
 
 async function criar(nomeTabela, id, dado) {
     if (id) {
-        const referenceEntity = await setDoc(doc(bd, nomeTabela, id), dado);
+        const referenceEntity = await setDoc(doc(bancoDados, nomeTabela, id), dado);
         const savedData = {
             ...dado,
             id: id
         }
         return savedData;
     } else {
-        const referenceEntity = await addDoc(collection(bd, nomeTabela), dado);
+        const referenceEntity = await addDoc(collection(bancoDados, nomeTabela), dado);
         const savedData = {
             ...dado,
             id: referenceEntity.id
@@ -41,8 +41,8 @@ async function criar(nomeTabela, id, dado) {
     }
 }
 
-async function get(nomeTabela) {
-    const tableRef = collection(bd, nomeTabela);
+async function buscar(nomeTabela) {
+    const tableRef = collection(bancoDados, nomeTabela);
 
     const q = query(tableRef);
 
@@ -60,8 +60,8 @@ async function get(nomeTabela) {
     return lista;
 }
 
-async function getById(nomeTabela, id) {
-    const docRef = doc(bd, nomeTabela, id);
+async function buscarPorId(nomeTabela, id) {
+    const docRef = doc(bancoDados, nomeTabela, id);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
@@ -71,17 +71,17 @@ async function getById(nomeTabela, id) {
     }
 }
 
-async function remove(nomeTabela, id){
-    const dado = await deleteDoc(doc(bd, nomeTabela, id));
+async function deletar(nomeTabela, id) {
+    const dado = await deleteDoc(doc(bancoDados, nomeTabela, id));
     return {
-        message: `${id} deletado`
+        message: `${id} deletado!`
     }
 }
 
 
 module.exports = {
     criar,
-    get,
-    getById,
-    remove
+    buscar,
+    buscarPorId,
+    deletar
 };
