@@ -14,14 +14,7 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
     const livrosAutores = req.body;
-    // const listaAutores = [
-    //     {   
-    //         idAutor1:"222"
-    //     },
-    //     {
-    //         idAutor2:"333"
-    //     }
-    // ];
+    
     if (livrosAutores.id_livro && livrosAutores.id_autores) {
         res.json(await livros_autoresHandler.criarLivrosAutor(req.body));
     } else {
