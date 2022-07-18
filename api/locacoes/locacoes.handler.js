@@ -1,8 +1,14 @@
 const { async } = require('@firebase/util');
 const { criar, buscar, buscarPorId, deletar } = require('../../CRUD/index');
 
+const livro = require('../livros/livros.handler');
+
 async function criarLocacao(locacao) {
-    const novaLocacao = await criar("locacoes", null, locacao);
+    const novaLocacao = await criar("locacoes", null, locacao);    
+    locacao.id_livros.forEach(async e => {
+        e.status = "Alugado";
+        await livro.attLivro(e.id_livro,e);
+    });
     return novaLocacao;
 }
 

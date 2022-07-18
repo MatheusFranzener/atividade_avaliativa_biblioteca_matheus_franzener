@@ -41,6 +41,10 @@ async function criar(nomeTabela, id, dado) {
     }
 }
 
+async function mudarStatus(nomeTabela,id){
+    
+}
+
 async function buscar(nomeTabela) {
     const tableRef = collection(bancoDados, nomeTabela);
 

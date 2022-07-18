@@ -14,11 +14,8 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
     const locacao = req.body;
-    if(locacao.livro_codigo && locacao.cpf_cliente){
-        res.json(await locacoesHandler.criarLocacao(locacao));
-    } else {
-        res.status(400).send("Preencha os campos!");
-    }
+    res.json(await locacoesHandler.criarLocacao(locacao));
+  
 });
 
 router.put("/:id", async (req, res) => {

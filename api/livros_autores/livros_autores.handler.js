@@ -2,7 +2,6 @@ const { async } = require('@firebase/util');
 const { criar, buscar, buscarPorId, deletar } = require('../../CRUD/index');
 
 async function criarLivrosAutor(livroAutor) {
-
     const livrosAutor = await criar("livros_autor", null, livroAutor);
     return livrosAutor;
 }
@@ -26,6 +25,7 @@ async function deletarLivosAutor(id) {
     const livrosAutorDeletado = deletar("livros_autor", id);
     return livrosAutorDeletado;
 }
+
 
 module.exports = {
     criarLivrosAutor,

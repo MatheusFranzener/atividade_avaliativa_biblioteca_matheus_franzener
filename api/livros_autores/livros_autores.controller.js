@@ -13,13 +13,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-    const livrosAutores = req.body;
-    
-    if (livrosAutores.id_livro && livrosAutores.id_autores) {
-        res.json(await livros_autoresHandler.criarLivrosAutor(req.body));
-    } else {
-        res.status(400).send("Preencha os campos!");
-    }
+    res.json(await livros_autoresHandler.criarLivrosAutor(req.body));
 });
 
 router.put("/:id", async (req, res) => {

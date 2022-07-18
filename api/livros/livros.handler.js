@@ -26,6 +26,11 @@ async function attLivro(id, livro) {
     return attLivro;
 }
 
+async function mudarStatus(id){
+    const attLivro = await mudarStatus("livros", id);
+    return attLivro;
+}
+
 async function deletarLivro(id) {
     const livroDeletado = deletar("livros", id);
     return livroDeletado;
