@@ -3,10 +3,15 @@ const { criar, buscar, buscarPorId, deletar } = require('../../CRUD/index');
 const livrosAutores = require('../livros_autores/livros_autores.handler')
 
 async function criarLivro(livro) {
+    const listaAutores = livro.id_autores;
+    delete livro.id_autores;
+
     const novoLivro = await criar("livros", null, livro);
-    livro.id_autores.forEach( async e => {
+    
+    listaAutores.forEach( async e => {
         e.id_livro = novoLivro.id;
         await livrosAutores.criarLivrosAutor(e);
+        console.log("Passando aq");
     });
     return novoLivro;
 }
@@ -18,6 +23,7 @@ async function buscarLivros() {
 
 async function buscarLivro(id) {
     const livro = await buscarPorId("livros", id);
+    console.log(livro);  
     return livro;
 }
 

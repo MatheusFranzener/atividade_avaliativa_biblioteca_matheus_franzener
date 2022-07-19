@@ -2,12 +2,17 @@ const { async } = require('@firebase/util');
 const { criar, buscar, buscarPorId, deletar } = require('../../CRUD/index');
 
 const livro = require('../livros/livros.handler');
+const {buscarClientes} = require("../clientes/clientes.handler");
 
 async function criarLocacao(locacao) {
     const novaLocacao = await criar("locacoes", null, locacao);    
-    locacao.id_livros.forEach(async e => {
+    const listaLivros = locacao.id_livros;
+
+    listaLivros.forEach(async e => {
         e.status = "Alugado";
-        await livro.attLivro(e.id_livro,e);
+        console.log(e.id_livro);
+        const objetoLivro = await livro.buscarLivro(e.id_livro);
+        await livro.attLivro(e.id_livro, objetoLivro);
     });
     return novaLocacao;
 }
@@ -32,12 +37,24 @@ async function deletarLocacao(id) {
     return locacaoDeletada;
 }
 
+// async function verificarCliente(id){
+//     const listaClientes = buscarClientes();
+//     (await listaClientes).forEach(function (e){
+//         if(e.cpf_cliente == id){
+//             return true;
+//         } else {
+//             return false;
+//         }
+//     });
+// }
+
 module.exports = {
     criarLocacao,
     buscarLocacoes,
     buscarLocacao,
     attLocacao,
-    deletarLocacao
+    deletarLocacao,
+    // verificarCliente
 };
 
 
